@@ -1,15 +1,37 @@
 let DisplayGroceryList = (props) => (
   <div>
-    <Groceries list={props.list}/>
+  {props.list.map(item =>
+    <Groceries item={item}/>
+  )}
   </div>
 );
 
-let Groceries = (props) => (
-  <ul>
-    <li>{props.list[0]}</li>
-    <li>{props.list[1]}</li>
-  </ul>
-);
+class Groceries extends React.Component {
 
-ReactDOM.render(<DisplayGroceryList list={["cucumbers", "kale"]} />, document.getElementById("app"));
-/*  */
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+      return (
+        <li>{this.props.item}</li>
+      )
+  };
+};
+
+ReactDOM.render(<DisplayGroceryList list={["cucumbers", "kale","apples"]} />, document.getElementById("app"));
+
+// let Groceries = (props) => {
+
+//   let onListItemClick = (event) => {
+//     console.log('I got clicked');
+//   }
+
+//   return (
+//     <ul>
+//       <li onClick={onListItemClick}>{props.list[0]}</li>
+//       <li>{props.list[1]}</li>
+//       <li>{props.list[2]}</li>
+//     </ul>
+//   )
+// };
