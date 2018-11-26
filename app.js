@@ -10,11 +10,25 @@ class Groceries extends React.Component {
 
   constructor(props){
     super(props);
+
+    this.state = {
+      hovering: false,
+    }
+    this.hoveringOverItem = this.hoveringOverItem.bind(this);
+  }
+
+  hoveringOverItem(){
+    this.setState ({
+      hovering: !this.state.hovering,
+    });
   }
 
   render(){
       return (
-        <li>{this.props.item}</li>
+        
+        <li onMouseEnter={this.hoveringOverItem} onMouseLeave={this.hoveringOverItem}>
+        {!this.state.hovering ? this.props.item : <b>{this.props.item}</b>}
+        </li>
       )
   };
 };
